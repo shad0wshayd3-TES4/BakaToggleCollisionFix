@@ -10,7 +10,7 @@ namespace Hooks
 			if (auto Engine = UE::UEngine::GetSingleton()) {
 				if (auto World = Engine->GetCurrentPlayWorld(nullptr)) {
 					if (auto PlayerController = UE::UGameplayStatics::GetPlayerController(World, 0)) {
-						CheatManager = *RE::stl::adjust_pointer<UE::UCheatManager*>(PlayerController, 0x400);
+						CheatManager = *REX::ADJUST_POINTER<UE::UCheatManager*>(PlayerController, 0x400);
 					}
 				}
 			}
@@ -49,7 +49,7 @@ namespace Hooks
 			return;
 		}
 
-		inline static REL::Hook _ClientMessage{ REL::Offset(0x2F8C090), 0x64, ClientMessage };
+		inline static REL::Hook _ClientMessage{ REL::Offset(0x2F7FD20), 0x64, ClientMessage };
 	};
 
 	class hkLoadGame
@@ -61,7 +61,7 @@ namespace Hooks
 			return _LoadGame(a_this);
 		}
 
-		inline static REL::Hook _LoadGame{ REL::Offset(0x6738A10), 0x1D12, LoadGame };
+		inline static REL::Hook _LoadGame{ REL::Offset(0x670CDC0), 0x1D12, LoadGame };
 	};
 
 	static void Install()
